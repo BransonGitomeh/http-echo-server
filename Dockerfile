@@ -9,8 +9,7 @@ COPY package*.json ./
 
 # Install dependencies (specifically 'get-port' required by your script)
 # If you don't have a package.json, this will create one and install the lib
-RUN if [ ! -f package.json ]; then npm init -y && npm install get-port; else npm ci --only=production; fi
-
+RUN npm install
 # Copy the rest of the application code
 COPY . .
 
@@ -22,4 +21,4 @@ EXPOSE 3000
 
 # Start the server
 # Replace 'index.js' with your actual filename (e.g., server.js)
-CMD ["node", "index.js"]
+CMD ["npm", "start"]
